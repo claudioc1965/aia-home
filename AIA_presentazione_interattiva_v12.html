@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIA – Simple solutions for real business</title>
+<style>
+:root{
+  --bg:#0b1220; --panel:#0e1931; --ink:#eef3ff; --muted:#b9c6ff; --line:#21315d;
+  --pri:#4da3ff; --sec:#6df2c1; --chip:#0f1b35; --brand-blue:#0f2b66;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Arial}
+
+/* Layout base */
+section{padding:26px 14px}
+.container{max-width:1100px;margin:0 auto}
+
+/* Hero: solo colonna sinistra, senza box immagine a destra */
+header.hero{max-width:1100px;margin:0 auto;padding:48px 18px 12px;display:grid;grid-template-columns:1fr;gap:18px}
+
+/* Riquadro bianco con logo + slogan in una sola riga */
+.logo-card{
+  width:100%; background:#fff; color:#000; border-radius:20px;
+  padding:12px 18px; display:flex; align-items:center; gap:18px;
+  box-shadow:0 10px 28px rgba(0,0,0,.22); min-height:84px;
+}
+.logo-card img{height:56px;width:auto;display:block}
+.logo-card .slogan{
+  color:var(--brand-blue); font-weight:800;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  font-size:clamp(18px, 2.2vw, 28px);
+}
+
+/* Testo introduttivo */
+h1{display:none} /* eliminata la riga H1 come richiesto */
+.lead{font-size:18px;color:var(--muted);margin:10px 0 0}
+
+/* KPI: 4 box uguali distribuiti su un'unica riga su desktop, centrati */
+.kpis{display:grid; grid-template-columns:1fr; gap:12px; width:100%; margin:18px 0; justify-items:stretch}
+.kpis span{
+  display:flex; justify-content:center; align-items:center; height:44px;
+  border-radius:14px; font-weight:600; background:var(--chip); border:1px solid var(--line); color:var(--muted); white-space:nowrap;
+}
+@media (min-width:1024px){ .kpis{ grid-template-columns:repeat(4, minmax(0,1fr)); } }
+.cta{display:none !important} /* rimossi pulsanti */
+
+/* Nav sticky centrata */
+nav.sticky{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.65);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav.sticky .wrap{max-width:1100px;margin:0 auto;padding:10px 14px;display:flex;gap:14px;justify-content:center}
+nav.sticky a{text-decoration:none;color:var(--muted);padding:8px 10px;border-radius:10px;white-space:nowrap}
+nav.sticky a:hover{background:#142245}
+
+/* Card generiche */
+.card{background:linear-gradient(180deg,#0f1a33,#0b162c);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 12px 32px rgba(0,0,0,.28)}
+.illus{border-radius:14px;border:1px solid var(--line);background:#09132a;width:100%;object-fit:cover}
+
+/* Sezione Perché sceglierci (a due colonne) */
+.grid-2{display:grid;grid-template-columns:1fr;gap:18px}
+@media (min-width:1000px){ .grid-2{grid-template-columns:1fr 1fr} }
+.grid-2 > *{height:100%}
+
+/* Servizi: griglia 2xN; se numero box è dispari, l’ultimo sarà full-width */
+.gallery{display:grid; grid-template-columns:1fr; gap:18px}
+.card.service-card{min-height:180px; display:flex; flex-direction:column; justify-content:flex-start}
+@media (min-width:900px){
+  .gallery{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .gallery > *:last-child:nth-child(odd){grid-column:1 / -1}
+}
+
+/* Footer */
+footer{padding:26px 14px;border-top:1px solid var(--line);color:#c7d4ff9c}
+.foot{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+
+/* === AIA v12: Perché sceglierci - colonna immagine -15%, testo distribuito in verticale === */
+@media (min-width: 1000px){
+  #perche .grid-2{grid-template-columns: 1.15fr 0.85fr; align-items: stretch;}
+  #perche .grid-2 > div:first-child{
+    display:flex; flex-direction:column; justify-content:space-between; height:100%;
+  }
+  #perche .grid-2 > .card{display:flex; flex-direction:column;}
+  #perche .grid-2 > .card .illus{flex:1; height:100%; object-fit:cover;}
+}
+
+
+/* === AIA: Perché sceglierci - testo subito sotto il titolo + interlinea 1.5 === */
+#perche h2{ margin-bottom:10px; }
+
+/* Colonne: immagine a destra ridotta e allineamenti verticali */
+@media (min-width:1000px){
+  #perche .grid-2{
+    grid-template-columns: 1.15fr 0.85fr; /* 15% in meno alla colonna immagine */
+    align-items: stretch;
+  }
+}
+
+/* Testo a sinistra: parte subito sotto il titolo e riempie verticalmente lo spazio */
+#perche .grid-2 > div:first-child{
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;   /* NON distribuito in basso */
+  gap:16px;                     /* spazio armonioso tra titolo/lista */
+}
+
+/* Interlinea del blocco di testo */
+#perche .grid-2 > div:first-child ul{
+  line-height:2;              /* era 1.5 interlinea aumentata */
+  margin-top:0;
+}
+
+/* Box immagine: occupa tutta l’altezza disponibile in modo pulito */
+#perche .grid-2 > .card{
+  display:flex; flex-direction:column;
+}
+#perche .grid-2 > .card .illus{
+  flex:1; height:100%; object-fit:cover;
+}
+
+/* === PATCH: Servizi -40% altezza + spaziature proporzionate === */
+.card.service-card{
+  min-height:108px;          /* da ~180px a -40% */
+  padding:12px 16px;         /* padding più compatto */
+}
+.card.service-card h3{       /* distanza titolo–descrizione */
+  margin:2px 0 6px;
+}
+.card.service-card p{
+  margin:0;
+  line-height:1.25;          /* descrizione leggermente più stretta */
+}
+
+/* === PATCH: Metodo - rimuovi box “Note” a destra e aumenta interlinea === */
+#metodo .grid-2 > .card{     /* il riquadro con “Nota/Note” */
+  display:none !important;
+}
+#metodo ol{
+  line-height:1.5;           /* interlinea maggiore per la lista puntata */
+}
+
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="logo-card">
+    <img src="AIA_logo_OK.jpg" alt="AIA logo">
+    <div class="slogan">Simple solutions for real business</div>
+  </div>
+
+  <div>
+    <p class="lead">Spendere meno, fare prima e meglio sono promesse che l'informatica difficilmente è riuscita a mantenere. Usiamo tecnologie moderne e piattaforme aperte per cercare di mantenere queste promesse.</p>
+    <div class="kpis">
+      <span>Risultati rapidi</span>
+      <span>Costi contenuti</span>
+      <span>Integrazione senza traumi</span>
+      <span>Approccio aperto</span>
+    </div>
+  </div>
+</header>
+
+<nav class="sticky"><div class="wrap">
+  <a href="#perche">Perché sceglierci</a>
+  <a href="#servizi">Servizi</a>
+  <a href="#metodo">Metodo</a>
+  <a href="#caso">Caso reale</a>
+  <a href="#contatti">Contatti</a>
+</div></nav>
+
+<section id="perche"><div class="container grid-2">
+  <div>
+    <h2>Perché sceglierci</h2>
+    <ul>
+      <li>Risultati rapidi e concreti: da settimane a pochi giorni.</li>
+      <li>Costi ridotti: niente licenze o sviluppi complessi se non servono.</li>
+      <li><strong>IT come investimento, non solo costo</strong>: per anni si è pensato che “fare IT” significasse solo spendere, spesso per ERP che nei reparti operativi rallentano. Con strumenti moderni riduciamo il disagio e rendiamo i flussi più fluidi.</li>
+      <li>Specialisti nell’integrazione: facciamo dialogare sistemi e software già in uso invece di sostituirli.</li>
+      <li>Continuità operativa: preserviamo interfacce e procedure note al personale.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <img class="illus" src="Img_centro.jpg" alt="Soluzioni su misura">
+  </div>
+</div></section>
+
+<section id="servizi"><div class="container">
+  <h2>Servizi</h2>
+  <div class="gallery">
+    <div class="card service-card"><h3>Integrazione sistemi</h3><p>Collegare e sincronizzare piattaforme aziendali diverse.</p></div>
+    <div class="card service-card"><h3>Applicazioni su misura</h3><p>Funzioni non coperte dai sistemi attuali.</p></div>
+    <div class="card service-card"><h3>Automazione</h3><p>Ridurre attività manuali ripetitive con soluzioni agili.</p></div>
+    <div class="card service-card"><h3>Inserimento e digitalizzazione dati</h3><p>Caricamenti rapidi, con verifica.</p></div>
+    <div class="card service-card"><h3>Report e analisi</h3><p>KPI e dashboard pronte all’uso.</p></div>
+    <div class="card service-card"><h3>Obiettivo</h3><p>Minimizzare l’impatto sugli utenti e massimizzare il ritorno.</p></div>
+  </div>
+</div></section>
+
+<section id="metodo"><div class="container grid-2">
+  <div>
+    <h2>Metodo</h2>
+    <ol>
+      <li>Analisi veloce e gratuita.</li>
+      <li>Proposta chiara (tempi, costi, benefici).</li>
+      <li>Sviluppo e test rapidi.</li>
+      <li>Integrazione graduale.</li>
+      <li>Formazione e supporto.</li>
+    </ol>
+  </div>
+  <div class="card"><p><strong>Nota:</strong> progettiamo con l’utente al centro e rilasci iterativi.</p></div>
+</div></section>
+
+<section id="caso"><div class="container">
+  <h2>Caso reale</h2>
+  <p>Una funzione stimata in 20 giorni/uomo realizzata in meno di 10 giorni: −50% costi e migliore qualità dell'interfaccia.</p>
+</div></section>
+
+<section id="contatti"><div class="container grid-2">
+  <div class="card">
+    <h2>Contatti</h2>
+    <p><strong>Email:</strong> <a href="mailto:aia4business@gmail.com">aia4business@gmail.com</a><br><strong>Telefono:</strong> 320 3669226</p>
+  </div>
+  <div class="card"><p>Preferisci un incontro? Scrivici: ti proponiamo una data in 24 ore.</p></div>
+</div></section>
+
+<footer><div class="foot">
+  <div>© 2025 AIA</div>
+  <div>Simple solutions for real business</div>
+</div></footer>
+
+</body>
+</html>

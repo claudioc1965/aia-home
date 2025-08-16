@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIA – Simple solutions for real business - Stampa</title>
+<style>
+:root{--ink:#111;--muted:#333;--line:#ddd;--accent:#0b61ff}
+html,body{margin:0;padding:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;color:var(--ink);background:#fff}
+.wrap{max-width:960px;margin:0 auto;padding:24px 20px}
+header{display:flex;gap:16px;align-items:center;border-bottom:2px solid #000;padding-bottom:14px;margin-bottom:18px}
+header img{max-height:58px}
+h1{font-size:24px;margin:0} p,li{font-size:14px;line-height:1.45}
+h2{margin:22px 0 8px;font-size:18px} .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.card{border:1px solid var(--line);border-radius:10px;padding:14px} .illus{width:100%;border:1px solid var(--line);border-radius:8px}
+.kpis{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0} .chip{border:1px solid var(--line);padding:6px 8px;border-radius:10px;font-size:12px}
+.contact{border-top:1px solid #000;margin-top:24px;padding-top:10px;font-size:14px}
+@page{size:A4;margin:16mm 14mm 16mm 14mm}
+@media print{a[href^="http"]::after{content:" (" attr(href) ")";font-size:11px;color:#666}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <img src="AIA_logo_OK.jpg" alt="AIA logo">
+      <div>
+        <h1>AIA – Simple solutions for real business</h1>
+        <p>Spendere meno, fare prima e meglio sono promesse che l'informatica difficilmente è riuscita a mantenere. Usiamo tecnologie moderne e piattaforme aperte per cercare di mantenere queste promesse.</p>
+        <div class="kpis">
+          <span class="chip">Risultati rapidi</span>
+          <span class="chip">Costi contenuti</span>
+          <span class="chip">Integrazione senza traumi</span>
+          <span class="chip">Approccio aperto</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="grid-2">
+      <div class="card">
+        <h2>Perché sceglierci</h2>
+        <ul>
+          <li>Risultati rapidi e concreti: da settimane a pochi giorni.</li><li>Costi ridotti: niente licenze o sviluppi complessi se non servono.</li><li><strong>IT come investimento, non solo costo</strong>: per anni si è pensato che “fare IT” significasse spendere sempre di più, spesso per ERP complessi che rallentano i reparti operativi. Con strumenti moderni riduciamo questi disagi e rendiamo i flussi più fluidi.</li><li>Specialisti nell’integrazione: facciamo dialogare sistemi e software già in uso invece di sostituirli.</li><li>Continuità operativa: preserviamo interfacce e procedure note al personale.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <img class="illus" src="Img_alto.jpg" alt="Hero">
+      </div>
+    </section>
+
+    <section>
+      <h2>Servizi</h2>
+      <div class="grid-2">
+        <div class='card'><h3>Integrazione sistemi</h3><p>Colleghiamo e sincronizziamo piattaforme aziendali diverse.</p></div><div class='card'><h3>Applicazioni su misura</h3><p>Copriamo funzioni non gestite o gestite male dai sistemi attuali.</p></div><div class='card'><h3>Automazione</h3><p>Riduciamo attività manuali ripetitive con soluzioni agili.</p></div><div class='card'><h3>Inserimento e digitalizzazione dati</h3><p>Caricamento rapido da cartaceo o file, con verifica.</p></div><div class='card'><h3>Report e analisi</h3><p>Calcoli, indicatori e dashboard pronte all’uso.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Metodo</h2>
+      <ol>
+        <li>Analisi veloce e gratuita delle esigenze.</li><li>Proposta chiara con tempi, costi e benefici.</li><li>Sviluppo e test rapidi con strumenti moderni.</li><li>Integrazione graduale per minimizzare l’impatto sugli utenti.</li><li>Formazione e supporto post-rilascio.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Caso reale</h2>
+      <p>Un cliente ha richiesto una funzione stimata in 20 giorni/uomo. Con il nostro metodo, l’abbiamo completata in 4 giorni: −80% costi e rilascio in meno di una settimana.</p>
+    </section>
+
+    <div class="contact">
+      <strong>Contatti</strong><br>
+      Email: <a href="mailto:aia4business@gmail.com">aia4business@gmail.com</a> — Tel: 320 3669226
+    </div>
+  </div>
+</body>
+</html>
