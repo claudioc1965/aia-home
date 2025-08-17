@@ -1,5 +1,18 @@
 <!DOCTYPE html>
 <html lang="it">
+  <!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2Q6K08L5Y8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  // Impostazioni base (GA4 anonimizza già gli IP a monte)
+  gtag('config', 'G-2Q6K08L5Y8', {
+    'cookie_flags': 'SameSite=None;Secure'
+    // 'debug_mode': true  // ← attivalo temporaneamente se vuoi usare DebugView
+  });
+</script>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
